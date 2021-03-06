@@ -5,17 +5,17 @@
   <button
     id="submit-todo"
     ng-disabled="todoForm.$invalid"
-    ng-click="todo.addTodo(todoItem)"
+    ng-click="todoCtrl.addTodo(todoItem)"
   >
     Submit
   </button>
 </form>
 
-<button ng-click="todo.clear()">Delete all</button>
+<button ng-click="todoCtrl.clear()">Delete all</button>
 
 <ul>
-  <li ng-repeat="task in todo.getTodos()">
-    {{task}}
-    <button ng-click="todo.deleteTodo($index)">Delete</button>
+  <li ng-repeat="todo in todoCtrl.getTodos()">
+    {{todo}}
+    <button ng-click="todoCtrl.deleteTodo($index)">Delete</button>
   </li>
 </ul>
