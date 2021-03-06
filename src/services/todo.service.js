@@ -19,5 +19,10 @@
     todoData.deleteTodo = (idx) => {
       todos.splice(idx, 1);
     }
+
+    todoData.clear = () => {
+      localStorage.clear()
+      console.log("Local storage cleared");
+    };
   }
 }());
