@@ -14,7 +14,7 @@
 <button ng-click="todoCtrl.clear()">Delete all</button>
 
 <ul>
-  <li ng-repeat="todo in todoCtrl.getTodos()">
+  <li ng-repeat="todo in todoCtrl.getTodos() track by $index">
     {{todo}}
     <button ng-click="todoCtrl.deleteTodo($index)">Delete</button>
   </li>
