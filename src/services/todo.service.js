@@ -11,15 +11,15 @@
     todoData.getTodosArr = () => localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
 
     todoData.addTodo = (todoItem) => {
-      let todos = todoData.getTodosArr();
-      todos.push(todoItem);
-      localStorage.setItem('todos', JSON.stringify(todos));
+      const todos = todoData.getTodosArr();
+      const newTodos = [...todos, todoItem];
+      localStorage.setItem('todos', JSON.stringify(newTodos));
     }
 
     todoData.deleteTodo = (idx) => {
-      let todos = todoData.getTodosArr();
-      todos.splice(idx, 1);
-      localStorage.setItem('todos', JSON.stringify(todos));
+      const todos = todoData.getTodosArr();
+      const newTodos = [...todos].filter((_, index) => index !== idx);
+      localStorage.setItem('todos', JSON.stringify(newTodos));
     }
 
     todoData.clear = () => localStorage.clear();
