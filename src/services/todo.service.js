@@ -17,12 +17,14 @@
     todoData.addTodo = (todoItem) => {
       const todos = todoData.getTodosArr();
       const newTodos = [...todos, todoItem];
+
       localStorage.setItem('todos', JSON.stringify(newTodos));
     }
 
     todoData.deleteTodo = (idx) => {
       const todos = todoData.getTodosArr();
       const newTodos = [...todos].filter((_, index) => index !== idx);
+
       localStorage.setItem('todos', JSON.stringify(newTodos));
     }
 

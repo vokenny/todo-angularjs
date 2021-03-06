@@ -5,14 +5,18 @@
     .module('TodoApp')
     .controller('TodoController', TodoController);
 
-  TodoController.$inject = ['TodoDataService'];
-  function TodoController(TodoDataService) {
+  TodoController.$inject = ['$scope', 'TodoDataService'];
+  function TodoController($scope, TodoDataService) {
     const todo = this;
     const todoData = TodoDataService;
 
     todo.getTodos = () => todoData.getTodosArr();
 
-    todo.addTodo = (todoItem) => todoData.addTodo(todoItem);
+    todo.addTodo = (todoItem) => {
+      todoData.addTodo(todoItem);
+
+      $scope.todoItem = '';
+    }
 
     todo.deleteTodo = (idx) => todoData.deleteTodo(idx);
 
