@@ -21,7 +21,40 @@
 
 <ul>
   <li ng-repeat="todo in todoCtrl.getTodos() track by $index">
-    {{todo}}
-    <button ng-click="todoCtrl.deleteTodo($index)">Delete</button>
+    <span ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
+      >{{todo}}</span
+    >
+    <button
+      ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
+      ng-click="todoCtrl.updateTodo($index)"
+    >
+      Update
+    </button>
+    <button
+      ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
+      ng-click="todoCtrl.deleteTodo($index)"
+    >
+      Delete
+    </button>
+    <form
+      ng-if="todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index"
+      name="updateTodoForm"
+      novalidate
+    >
+      <input
+        required
+        id="update-todo"
+        placeholder="{{todo}}"
+        ng-model="updateTodoItem"
+        type="text"
+      />
+      <button
+        ng-disabled="updateTodoForm.$invalid"
+        ng-click="todoCtrl.confirmUpdate($index, updateTodoItem)"
+      >
+        Confirm
+      </button>
+      <button ng-click="todoCtrl.cancelUpdate()">Cancel</button>
+    </form>
   </li>
 </ul>

@@ -21,6 +21,13 @@
       localStorage.setItem('todos', JSON.stringify(newTodos));
     }
 
+    todoData.updateTodo = (idx, updatedTodo) => {
+      const todos = todoData.getTodosArr();
+      const newTodos = [...todos].map((todo, index) => index === idx ? updatedTodo : todo);
+
+      localStorage.setItem('todos', JSON.stringify(newTodos));
+    }
+
     todoData.deleteTodo = (idx) => {
       const todos = todoData.getTodosArr();
       const newTodos = [...todos].filter((_, index) => index !== idx);
