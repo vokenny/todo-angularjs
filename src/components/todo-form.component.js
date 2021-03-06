@@ -3,5 +3,8 @@
 
   angular
     .module('TodoApp')
-    .component('todoForm', {});
+    .component('todoForm', {
+      templateUrl: "src/templates/todo-form.html",
+      controller: "TodoController as todo"
+    });
 }());

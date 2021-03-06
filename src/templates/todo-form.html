@@ -1,0 +1,19 @@
+<form name="todoForm" novalidate>
+  <label for="input-todo"></label>
+  <input required id="input-todo" name="todo" ng-model="todoItem" type="text" />
+
+  <button
+    id="submit-todo"
+    ng-disabled="todoForm.$invalid"
+    ng-click="todo.addTodo(todoItem)"
+  >
+    Submit
+  </button>
+</form>
+
+<ul>
+  <li ng-repeat="task in todo.getTodos">
+    {{task}}
+    <button ng-click="todo.deleteTodo($index)">delete</button>
+  </li>
+</ul>

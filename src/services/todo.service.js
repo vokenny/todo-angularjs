@@ -7,5 +7,17 @@
 
   function TodoDataService() {
     const todoData = this;
+
+    let todos = [];
+
+    todoData.todosArr = todos;
+
+    todoData.addTodo = (todoItem) => {
+      todos.push(todoItem);
+    }
+
+    todoData.deleteTodo = (idx) => {
+      todos.splice(idx, 1);
+    }
   }
 }());

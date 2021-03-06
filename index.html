@@ -7,7 +7,7 @@
     <title>Todo App</title>
   </head>
   <body ng-app="TodoApp">
-    <main class="container" ng-controller="TodoController as todo">
+    <main class="container">
       <h1>Todo App</h1>
 
       <todo-form></todo-form>
@@ -32,5 +32,10 @@
 
     <!-- Modules -->
     <script src="src/modules/todoapp.module.js"></script>
+
+    <!-- TodoApp module artifacts -->
+    <script src="src/services/todo.service.js"></script>
+    <script src="src/controllers/todo.controller.js"></script>
+    <script src="src/components/todo-form.component.js"></script>
   </body>
 </html>
