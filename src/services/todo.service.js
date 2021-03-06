@@ -8,7 +8,11 @@
   function TodoDataService() {
     const todoData = this;
 
-    todoData.getTodosArr = () => localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
+    todoData.getTodosArr = () => {
+      const todosStorage = localStorage.getItem('todos')
+
+      return todosStorage ? JSON.parse(todosStorage) : [];
+    }
 
     todoData.addTodo = (todoItem) => {
       const todos = todoData.getTodosArr();
