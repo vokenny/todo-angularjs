@@ -8,21 +8,20 @@
   function TodoDataService() {
     const todoData = this;
 
-    let todos = [];
-
-    todoData.todosArr = todos;
+    todoData.getTodosArr = () => localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
 
     todoData.addTodo = (todoItem) => {
+      let todos = todoData.getTodosArr();
       todos.push(todoItem);
+      localStorage.setItem('todos', JSON.stringify(todos));
     }
 
     todoData.deleteTodo = (idx) => {
+      let todos = todoData.getTodosArr();
       todos.splice(idx, 1);
+      localStorage.setItem('todos', JSON.stringify(todos));
     }
 
-    todoData.clear = () => {
-      localStorage.clear()
-      console.log("Local storage cleared");
-    };
+    todoData.clear = () => localStorage.clear();
   }
 }());

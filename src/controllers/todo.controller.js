@@ -10,15 +10,11 @@
     const todo = this;
     const todoData = TodoDataService;
 
-    todo.getTodos = todoData.todosArr;
+    todo.getTodos = () => todoData.getTodosArr();
 
-    todo.addTodo = (todoItem) => {
-      todoData.addTodo(todoItem);
-    }
+    todo.addTodo = (todoItem) => todoData.addTodo(todoItem);
 
-    todo.deleteTodo = (idx) => {
-      todoData.deleteTodo(idx);
-    }
+    todo.deleteTodo = (idx) => todoData.deleteTodo(idx);
 
     todo.clear = () => todoData.clear();
   }
