@@ -19,11 +19,14 @@
 
 <button ng-click="todoCtrl.clear()">Delete all</button>
 
-<ul>
-  <li ng-repeat="todo in todoCtrl.getTodos() track by $index">
-    <span ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
-      >{{todo}}</span
+<div ng-repeat="todo in todoCtrl.getTodos() track by $index">
+  <div>
+    <span
+      class="card-text"
+      ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
     >
+      {{todo}}
+    </span>
     <button
       ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
       ng-click="todoCtrl.updateTodo($index)"
@@ -36,6 +39,7 @@
     >
       Delete
     </button>
+
     <form
       ng-if="todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index"
       name="updateTodoForm"
@@ -56,5 +60,5 @@
       </button>
       <button ng-click="todoCtrl.cancelUpdate()">Cancel</button>
     </form>
-  </li>
-</ul>
+  </div>
+</div>
