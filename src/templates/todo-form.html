@@ -19,8 +19,11 @@
 
 <button ng-click="todoCtrl.clear()">Delete all</button>
 
-<div ng-repeat="todo in todoCtrl.getTodos() track by $index">
-  <div>
+<div
+  class="card bg-light mb-3"
+  ng-repeat="todo in todoCtrl.getTodos() track by $index"
+>
+  <div class="card-body">
     <span
       class="card-text"
       ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
