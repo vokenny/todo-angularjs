@@ -56,7 +56,6 @@ button {
   justify-content: right;
 }
 
-#edit-todo,
-#confirm-edit {
+.manage-todo {
   margin-right: 2vw;
 }

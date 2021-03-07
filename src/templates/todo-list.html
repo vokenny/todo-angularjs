@@ -17,15 +17,13 @@
           ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
         >
           <button
-            id="edit-todo"
-            class="btn btn-primary"
+            class="manage-todo btn btn-primary"
             ng-click="todoCtrl.updateTodo($index)"
           >
             Edit
           </button>
           <button
-            id="delete-todo"
-            class="btn btn-secondary"
+            class="manage-todo btn btn-secondary"
             ng-click="todoCtrl.deleteTodo($index)"
           >
             Delete
@@ -52,7 +50,7 @@
           <div class="card-footer bg-transparent">
             <button
               id="confirm-edit"
-              class="btn btn-primary"
+              class="manage-todo btn btn-primary"
               ng-disabled="updateTodoForm.$invalid"
               ng-click="todoCtrl.confirmUpdate($index, updateTodoItem)"
             >
@@ -60,7 +58,7 @@
             </button>
             <button
               id="cancel-edit"
-              class="btn btn-secondary"
+              class="manage-todo btn btn-secondary"
               ng-click="todoCtrl.cancelUpdate()"
             >
               Cancel
