@@ -9,12 +9,10 @@ body {
 
 #title {
   color: #cdedff;
-  margin-top: 5vh;
 }
 
 div.row > * {
   float: left;
-  margin: 3vh auto;
 }
 
 button {
@@ -22,12 +20,7 @@ button {
 }
 
 /* NEW TODO INPUT FORM */
-#todo-form {
-  margin: 3vh auto;
-}
-
 #input-todo-help {
-  margin-left: 0.5vw;
   display: block;
   color: #cdedff;
 }
@@ -35,12 +28,10 @@ button {
 #submit-todo {
   float: left;
   clear: left;
-  margin-top: 2vh;
 }
 
 #delete-all {
   float: right;
-  margin-top: 2vh;
 }
 
 /* TODO CARDS */
@@ -51,12 +42,5 @@ button {
 
 .card-footer {
   display: flex;
-  margin-top: 2vh;
-  padding: 0 !important;
-  padding-top: 2vh !important;
   justify-content: right;
-}
-
-.manage-todo {
-  margin-left: 2vw;
 }
