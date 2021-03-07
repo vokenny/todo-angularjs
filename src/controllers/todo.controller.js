@@ -13,7 +13,7 @@
     todo.updateMode = false;
     todo.updateTodoIdx = 0;
 
-    todo.getTodos = () => todoData.getTodosArr().reverse();
+    todo.getTodos = () => todoData.getTodosArr();
 
     todo.addTodo = (todoItem) => {
       todoData.addTodo(todoItem);

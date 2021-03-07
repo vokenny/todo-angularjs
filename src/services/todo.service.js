@@ -16,7 +16,7 @@
 
     todoData.addTodo = (todoItem) => {
       const todos = todoData.getTodosArr();
-      const newTodos = [...todos, todoItem];
+      const newTodos = [todoItem, ...todos];
 
       localStorage.setItem('todos', JSON.stringify(newTodos));
     }
