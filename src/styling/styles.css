@@ -1,0 +1,62 @@
+* {
+  font-family: 'DotGothic16', sans-serif;
+  font-size: calc(16px + 0.1vw);
+}
+
+body {
+  background-color: #004a75 !important;
+}
+
+#title {
+  color: #cdedff;
+  margin-top: 5vh;
+}
+
+div.row > * {
+  float: left;
+  margin: 3vh auto;
+}
+
+button {
+  font-size: calc(12px + 0.1vw) !important;
+}
+
+/* NEW TODO INPUT FORM */
+#todo-form {
+  margin: 3vh auto;
+}
+
+#input-todo-help {
+  margin-left: 0.5vw;
+  display: block;
+  color: #cdedff;
+}
+
+#submit-todo {
+  float: left;
+  clear: left;
+  margin-top: 2vh;
+}
+
+#delete-all {
+  float: right;
+  margin-top: 2vh;
+}
+
+/* TODO CARDS */
+.card {
+  background-color: #17a2b8 !important;
+}
+
+.card-footer {
+  display: flex;
+  margin-top: 2vh;
+  padding: 0 !important;
+  padding-top: 2vh !important;
+  justify-content: right;
+}
+
+#edit-todo,
+#confirm-edit {
+  margin-right: 2vw;
+}

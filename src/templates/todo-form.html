@@ -1,67 +1,118 @@
-<form name="todoForm" novalidate>
-  <input
-    required
-    id="input-todo"
-    placeholder="Add new todo"
-    name="todo"
-    ng-model="todoItem"
-    type="text"
-  />
-
-  <button
-    id="submit-todo"
-    ng-disabled="todoForm.$invalid"
-    ng-click="todoCtrl.addTodo(todoItem)"
-  >
-    Submit
-  </button>
-</form>
-
-<button ng-click="todoCtrl.clear()">Delete all</button>
-
-<div
-  class="card bg-light mb-3"
-  ng-repeat="todo in todoCtrl.getTodos() track by $index"
->
-  <div class="card-body">
-    <span
-      class="card-text"
-      ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
-    >
-      {{todo}}
-    </span>
-    <button
-      ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
-      ng-click="todoCtrl.updateTodo($index)"
-    >
-      Update
-    </button>
-    <button
-      ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
-      ng-click="todoCtrl.deleteTodo($index)"
-    >
-      Delete
-    </button>
-
-    <form
-      ng-if="todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index"
-      name="updateTodoForm"
-      novalidate
-    >
-      <input
-        required
-        id="update-todo"
-        placeholder="{{todo}}"
-        ng-model="updateTodoItem"
-        type="text"
-      />
-      <button
-        ng-disabled="updateTodoForm.$invalid"
-        ng-click="todoCtrl.confirmUpdate($index, updateTodoItem)"
+<div class="row">
+  <div class="form-container col-sm-10 col-md-6">
+    <!-- Start of new todo input form -->
+    <form id="todo-form" name="todoForm" novalidate>
+      <div class="form-group">
+        <input
+          required
+          id="input-todo"
+          class="form-control"
+          placeholder="Add new todo"
+          name="todo"
+          ng-model="todoItem"
+          maxlength="120"
+          type="text"
+        />
+      </div>
+      <small id="input-todo-help" class="form-text"
+        >Maximum length: 120 characters</small
       >
-        Confirm
+
+      <button
+        id="submit-todo"
+        type="submit"
+        class="btn btn-success"
+        ng-disabled="todoForm.$invalid"
+        ng-click="todoCtrl.addTodo(todoItem)"
+      >
+        Submit
       </button>
-      <button ng-click="todoCtrl.cancelUpdate()">Cancel</button>
+      <button
+        id="delete-all"
+        class="btn btn-danger"
+        ng-disabled="!todoCtrl.getTodos().length"
+        ng-click="todoCtrl.clear()"
+      >
+        Delete all
+      </button>
     </form>
+    <!-- End of new todo input form -->
   </div>
 </div>
+<!-- End of .row container -->
+
+<div class="row">
+  <div class="col-sm-12 col-md-8">
+    <!-- Start of cards of existing todos -->
+    <div
+      class="card text-white mb-3"
+      ng-repeat="todo in todoCtrl.getTodos() track by $index"
+    >
+      <div class="card-body">
+        <p
+          class="card-text"
+          ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
+        >
+          {{todo}}
+        </p>
+        <div
+          class="card-footer bg-transparent"
+          ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
+        >
+          <button
+            id="edit-todo"
+            class="btn btn-primary"
+            ng-click="todoCtrl.updateTodo($index)"
+          >
+            Edit
+          </button>
+          <button
+            id="delete-todo"
+            class="btn btn-secondary"
+            ng-click="todoCtrl.deleteTodo($index)"
+          >
+            Delete
+          </button>
+        </div>
+
+        <!-- Form appears for specific Todo in update mode -->
+        <form
+          id="update-todo-form"
+          ng-if="todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index"
+          name="updateTodoForm"
+          novalidate
+        >
+          <div class="form-group">
+            <input
+              required
+              id="update-todo"
+              class="form-control"
+              placeholder="{{todo}}"
+              ng-model="updateTodoItem"
+              type="text"
+            />
+          </div>
+          <div class="card-footer bg-transparent">
+            <button
+              id="confirm-edit"
+              class="btn btn-primary"
+              ng-disabled="updateTodoForm.$invalid"
+              ng-click="todoCtrl.confirmUpdate($index, updateTodoItem)"
+            >
+              Confirm
+            </button>
+            <button
+              id="cancel-edit"
+              class="btn btn-secondary"
+              ng-click="todoCtrl.cancelUpdate()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- End of cards of existing todos -->
+  </div>
+</div>
+<!-- End of .row container -->
