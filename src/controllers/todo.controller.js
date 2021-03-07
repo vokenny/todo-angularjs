@@ -13,7 +13,7 @@
     todo.updateMode = false;
     todo.updateTodoIdx = 0;
 
-    todo.getTodos = () => todoData.getTodosArr();
+    todo.getTodos = () => todoData.getTodosArr().reverse();
 
     todo.addTodo = (todoItem) => {
       todoData.addTodo(todoItem);
@@ -27,7 +27,6 @@
     };
 
     todo.confirmUpdate = (idx, todoUpdate) => {
-      console.log('todoUpdate', todoUpdate);
       todoData.updateTodo(idx, todoUpdate);
       todo.updateMode = false;
     };
