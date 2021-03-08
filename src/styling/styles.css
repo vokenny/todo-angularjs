@@ -45,6 +45,7 @@ button {
 
 /* TODO CARDS */
 .card {
+  margin-bottom: max(5vh, 3vw);
   box-shadow: 0 3vw 2vw -2vw #001622;
   border-width: 4px !important;
 }
