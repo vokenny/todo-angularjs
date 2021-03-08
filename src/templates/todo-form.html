@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="form-container col-sm-10 col-md-6 mt-4 mx-auto">
+  <div class="form-container col-sm-10 col-md-6">
     <!-- Start of new todo input form -->
-    <form id="todo-form" class="mt-4 mb-4 ms-auto" name="todoForm" novalidate>
+    <form id="todo-form" name="todoForm" novalidate>
       <div class="form-group">
         <input
           required
@@ -21,7 +21,7 @@
       <button
         id="submit-todo"
         type="submit"
-        class="btn btn-success mt-3"
+        class="btn btn-success"
         ng-disabled="todoForm.$invalid"
         ng-click="todoCtrl.addTodo(todoItem)"
       >
@@ -29,7 +29,7 @@
       </button>
       <button
         id="delete-all"
-        class="btn btn-danger mt-3"
+        class="btn btn-danger"
         ng-disabled="!todoCtrl.getTodos().length"
         ng-click="todoCtrl.clear()"
       >

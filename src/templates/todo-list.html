@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-12 col-md-8 mt-4 mx-auto">
+  <div class="col-sm-12 col-md-8">
     <!-- Start of cards of existing todos -->
     <div
       class="card text-dark bg-warning mb-5"
@@ -13,17 +13,17 @@
           {{todo}}
         </p>
         <div
-          class="card-footer bg-transparent mt-3 p-0 pt-3"
+          class="card-footer bg-transparent"
           ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
         >
           <button
-            class="manage-todo btn btn-primary ms-3"
+            class="manage-todo btn btn-primary"
             ng-click="todoCtrl.updateTodo($index)"
           >
             Edit
           </button>
           <button
-            class="manage-todo btn btn-secondary ms-3"
+            class="manage-todo btn btn-secondary"
             ng-click="todoCtrl.deleteTodo($index)"
           >
             Delete
@@ -47,10 +47,10 @@
               type="text"
             />
           </div>
-          <div class="card-footer bg-transparent mt-3 p-0 pt-3">
+          <div class="card-footer bg-transparent">
             <button
               id="confirm-edit"
-              class="manage-todo btn btn-primary ms-3"
+              class="manage-todo btn btn-primary"
               ng-disabled="updateTodoForm.$invalid"
               ng-click="todoCtrl.confirmUpdate($index, updateTodoItem)"
             >
@@ -58,7 +58,7 @@
             </button>
             <button
               id="cancel-edit"
-              class="manage-todo btn btn-secondary ms-3"
+              class="manage-todo btn btn-secondary"
               ng-click="todoCtrl.cancelUpdate()"
             >
               Cancel
