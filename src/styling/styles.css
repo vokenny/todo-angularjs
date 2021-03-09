@@ -57,13 +57,13 @@ button {
 }
 
 .card-footer {
-  display: flex;
+  display: flexbox;
   margin-top: 2vh;
   padding: 0 !important;
   padding-top: 2vh !important;
-  justify-content: right;
 }
 
 .manage-todo {
+  float: right;
   margin-left: 2vw;
 }

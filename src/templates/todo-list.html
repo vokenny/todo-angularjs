@@ -12,21 +12,30 @@
         >
           {{todo}}
         </p>
+
         <div
           class="card-footer bg-transparent"
           ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
         >
           <button
-            class="manage-todo btn btn-primary"
-            ng-click="todoCtrl.updateTodo($index)"
+            class="btn btn-success"
+            ng-click="todoCtrl.markCompleted($index)"
           >
-            Edit
+            Completed ?
           </button>
+
           <button
             class="manage-todo btn btn-secondary"
             ng-click="todoCtrl.deleteTodo($index)"
           >
             Delete
+          </button>
+
+          <button
+            class="manage-todo btn btn-primary"
+            ng-click="todoCtrl.updateTodo($index)"
+          >
+            Edit
           </button>
         </div>
 
@@ -69,6 +78,7 @@
             </button>
           </div>
         </form>
+        <!-- End of update todo form -->
       </div>
       <!-- End of .card-body container -->
     </div>
