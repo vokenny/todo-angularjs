@@ -50,6 +50,12 @@ button {
   border-width: 4px !important;
 }
 
+#update-todo-help {
+  margin-left: 0.5vw;
+  display: block;
+  color: #004a75;
+}
+
 .card-footer {
   display: flex;
   margin-top: 2vh;
