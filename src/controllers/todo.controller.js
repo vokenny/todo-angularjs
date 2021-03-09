@@ -36,5 +36,7 @@
     todo.deleteTodo = (idx) => todoData.deleteTodo(idx);
 
     todo.clear = () => todoData.clear();
+
+    todo.changeDoneState = (idx) => todoData.updateTodo(idx);
   }
 }());

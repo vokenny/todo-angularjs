@@ -7,25 +7,39 @@
 
   function TodoDataService() {
     const todoData = this;
+    var todosStorage = JSON.parse(localStorage.getItem('todos'));
 
-    todoData.getTodosArr = () => {
-      const todosStorage = localStorage.getItem('todos')
+    todoData.getTodosArr = () => todosStorage ? todosStorage : [];
 
-      return todosStorage ? JSON.parse(todosStorage) : [];
+    function refreshStorage() {
+      todosStorage = JSON.parse(localStorage.getItem('todos'));
     }
 
     todoData.addTodo = (todoItem) => {
+      const newTodo = {
+        text: todoItem,
+        isDone: false
+      };
+
       const todos = todoData.getTodosArr();
-      const newTodos = [todoItem, ...todos];
+      const newTodos = [newTodo, ...todos];
 
       localStorage.setItem('todos', JSON.stringify(newTodos));
+      refreshStorage();
     }
 
     todoData.updateTodo = (idx, updatedTodo) => {
       const todos = todoData.getTodosArr();
-      const newTodos = [...todos].map((todo, index) => index === idx ? updatedTodo : todo);
+      const newTodos = [...todos].map((todo, index) => {
+        if (index === idx) {
+          return updatedTodo ? { text: updatedTodo, isDone: false } : { text: todo.text, isDone: !(todo.isDone) };
+        } else {
+          return todo;
+        }
+      });
 
       localStorage.setItem('todos', JSON.stringify(newTodos));
+      refreshStorage();
     }
 
     todoData.deleteTodo = (idx) => {
@@ -33,8 +47,12 @@
       const newTodos = [...todos].filter((_, index) => index !== idx);
 
       localStorage.setItem('todos', JSON.stringify(newTodos));
+      refreshStorage();
     }
 
-    todoData.clear = () => localStorage.clear();
+    todoData.clear = () => {
+      localStorage.clear();
+      refreshStorage();
+    }
   }
 }());

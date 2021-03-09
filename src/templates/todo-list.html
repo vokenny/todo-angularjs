@@ -6,20 +6,20 @@
       ng-repeat="todo in todoCtrl.getTodos() track by $index"
     >
       <div class="card-body">
-        <p
+        <span
           class="card-text"
-          ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
+          ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index) && !todo.isDone"
         >
-          {{todo}}
-        </p>
-
+          {{todo.text}}
+        </span>
+        <del ng-if="todo.isDone">{{todo.text}}</del>
         <div
           class="card-footer bg-transparent"
           ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
         >
           <button
             class="btn btn-success"
-            ng-click="todoCtrl.markCompleted($index)"
+            ng-click="todoCtrl.changeDoneState($index)"
           >
             Completed ?
           </button>
@@ -33,6 +33,7 @@
 
           <button
             class="manage-todo btn btn-primary"
+            ng-disabled="todo.isDone"
             ng-click="todoCtrl.updateTodo($index)"
           >
             Edit
@@ -51,7 +52,7 @@
               required
               id="update-todo"
               class="form-control"
-              placeholder="{{todo}}"
+              placeholder="{{todo.text}}"
               ng-model="updateTodoItem"
               maxlength="150"
               type="text"
@@ -62,19 +63,20 @@
           >
           <div class="card-footer bg-transparent">
             <button
-              id="confirm-edit"
-              class="manage-todo btn btn-primary"
-              ng-disabled="updateTodoForm.$invalid"
-              ng-click="todoCtrl.confirmUpdate($index, updateTodoItem)"
-            >
-              Confirm
-            </button>
-            <button
               id="cancel-edit"
               class="manage-todo btn btn-secondary"
+              ng-disabled="todo.isDone"
               ng-click="todoCtrl.cancelUpdate()"
             >
               Cancel
+            </button>
+            <button
+              id="confirm-edit"
+              class="manage-todo btn btn-primary"
+              ng-disabled="updateTodoForm.$invalid || todo.isDone"
+              ng-click="todoCtrl.confirmUpdate($index, updateTodoItem)"
+            >
+              Confirm
             </button>
           </div>
         </form>
