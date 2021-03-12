@@ -23,15 +23,15 @@
         type="submit"
         class="btn btn-success"
         ng-disabled="todoForm.$invalid"
-        ng-click="todoCtrl.addTodo(todoItem)"
+        ng-click="todoFormCtrl.addTodo(todoItem)"
       >
         Submit
       </button>
       <button
         id="delete-all"
         class="btn btn-danger"
-        ng-disabled="!todoCtrl.getTodos().length"
-        ng-click="todoCtrl.clear()"
+        ng-disabled="!todoFormCtrl.todos.length"
+        ng-click="todoFormCtrl.clear()"
       >
         Delete all
       </button>

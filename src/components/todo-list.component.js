@@ -4,7 +4,11 @@
   angular
     .module('TodoApp')
     .component('todoList', {
-      templateUrl: "src/templates/todo-list.html",
-      controller: "TodoController as todoCtrl"
+      templateUrl: 'src/templates/todo-list.html',
+      controller: 'TodoListController',
+      controllerAs: 'todoListCtrl',
+      bindings: {
+        todos: '<'
+      }
     });
 }());

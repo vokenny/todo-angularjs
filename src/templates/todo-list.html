@@ -3,30 +3,30 @@
     <!-- Start of cards of existing todos -->
     <div
       class="card text-dark bg-warning"
-      ng-repeat="todo in todoCtrl.getTodos() track by $index"
+      ng-repeat="todo in todoListCtrl.todos track by $index"
     >
       <div class="card-body">
         <span
           class="card-text"
-          ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index) && !todo.isDone"
+          ng-if="!(todoListCtrl.updateMode && todoListCtrl.updateTodoIdx === $index) && !todo.isDone"
         >
           {{todo.text}}
         </span>
         <del ng-if="todo.isDone">{{todo.text}}</del>
         <div
           class="card-footer bg-transparent"
-          ng-if="!(todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index)"
+          ng-if="!(todoListCtrl.updateMode && todoListCtrl.updateTodoIdx === $index)"
         >
           <button
             class="btn btn-success"
-            ng-click="todoCtrl.changeDoneState($index)"
+            ng-click="todoListCtrl.changeDoneState($index)"
           >
             Completed ?
           </button>
 
           <button
             class="manage-todo btn btn-secondary"
-            ng-click="todoCtrl.deleteTodo($index)"
+            ng-click="todoListCtrl.deleteTodo($index)"
           >
             Delete
           </button>
@@ -34,7 +34,7 @@
           <button
             class="manage-todo btn btn-primary"
             ng-disabled="todo.isDone"
-            ng-click="todoCtrl.updateTodo($index)"
+            ng-click="todoListCtrl.updateTodo($index)"
           >
             Edit
           </button>
@@ -43,7 +43,7 @@
         <!-- Form appears for specific Todo in update mode -->
         <form
           id="update-todo-form"
-          ng-if="todoCtrl.updateMode && todoCtrl.updateTodoIdx === $index"
+          ng-if="todoListCtrl.updateMode && todoListCtrl.updateTodoIdx === $index"
           name="updateTodoForm"
           novalidate
         >
@@ -66,7 +66,7 @@
               id="cancel-edit"
               class="manage-todo btn btn-secondary"
               ng-disabled="todo.isDone"
-              ng-click="todoCtrl.cancelUpdate()"
+              ng-click="todoListCtrl.cancelUpdate()"
             >
               Cancel
             </button>
@@ -74,7 +74,7 @@
               id="confirm-edit"
               class="manage-todo btn btn-primary"
               ng-disabled="updateTodoForm.$invalid || todo.isDone"
-              ng-click="todoCtrl.confirmUpdate($index, updateTodoItem)"
+              ng-click="todoListCtrl.confirmUpdate($index, updateTodoItem)"
             >
               Confirm
             </button>

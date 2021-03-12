@@ -22,8 +22,10 @@
     <main class="container">
       <h1 id="title" class="text-center">Todo App</h1>
 
-      <todo-form></todo-form>
-      <todo-list></todo-list>
+      <section ng-controller="TodoController as todoCtrl">
+        <todo-form todos="todoCtrl.getTodos()"></todo-form>
+        <todo-list todos="todoCtrl.getTodos()"></todo-list>
+      </section>
     </main>
 
     <!-- Libraries -->
@@ -50,6 +52,8 @@
     <!-- TodoApp module artifacts -->
     <script src="src/services/todo.service.js"></script>
     <script src="src/controllers/todo.controller.js"></script>
+    <script src="src/controllers/todoForm.controller.js"></script>
+    <script src="src/controllers/todoList.controller.js"></script>
     <script src="src/components/todo-form.component.js"></script>
     <script src="src/components/todo-list.component.js"></script>
   </body>
