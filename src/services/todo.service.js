@@ -7,13 +7,13 @@
 
   function TodoDataService() {
     const todoData = this;
-    var todosCache = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
+    var todosStorage = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
 
-    todoData.getTodosArr = () => todosCache;
+    todoData.getTodosArr = () => todosStorage;
 
-    function updateCache() {
+    function updateStorage() {
       const storage = localStorage.getItem('todos');
-      todosCache = storage ? JSON.parse(storage) : [];
+      todosStorage = storage ? JSON.parse(storage) : [];
     }
 
     todoData.addTodo = (todoItem) => {
@@ -26,7 +26,7 @@
       const newTodos = [newTodo, ...todos];
 
       localStorage.setItem('todos', JSON.stringify(newTodos));
-      updateCache();
+      updateStorage();
     }
 
     todoData.updateTodo = (idx, updatedTodo) => {
@@ -40,7 +40,7 @@
       });
 
       localStorage.setItem('todos', JSON.stringify(newTodos));
-      updateCache();
+      updateStorage();
     }
 
     todoData.deleteTodo = (idx) => {
@@ -48,12 +48,12 @@
       const newTodos = [...todos].filter((_, index) => index !== idx);
 
       localStorage.setItem('todos', JSON.stringify(newTodos));
-      updateCache();
+      updateStorage();
     }
 
     todoData.clear = () => {
       localStorage.clear();
-      updateCache();
+      updateStorage();
     }
   }
 }());
