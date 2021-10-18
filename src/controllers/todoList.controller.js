@@ -10,23 +10,17 @@
     const todoList = this;
     const todoData = TodoDataService;
 
-    todoList.updateMode = false;
-    todoList.updateTodoIdx = 0;
-
-    todoList.updateTodo = (idx) => {
-      todoList.updateMode = true;
-      todoList.updateTodoIdx = idx;
+    todoList.toggleUpdateMode = (idx) => {
+      todoData.toggleUpdateMode(idx);
     };
 
-    todoList.confirmUpdate = (idx, todoUpdate) => {
-      todoData.updateTodo(idx, todoUpdate);
-      todoList.updateMode = false;
+    todoList.confirmUpdate = (idx, updatedTodoText) => {
+      todoData.updateTodo(idx, updatedTodoText);
+      todoData.toggleUpdateMode(idx);
     };
-
-    todoList.cancelUpdate = () => todoList.updateMode = false;
 
     todoList.deleteTodo = (idx) => todoData.deleteTodo(idx);
 
-    todoList.changeDoneState = (idx) => todoData.updateTodo(idx);
+    todoList.toggleDoneState = (idx) => todoData.toggleDoneState(idx);
   }
 }());

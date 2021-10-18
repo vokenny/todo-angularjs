@@ -19,7 +19,8 @@
     todoData.addTodo = (todoItem) => {
       const newTodo = {
         text: todoItem,
-        isDone: false
+        isDone: false,
+        isUpdating: false,
       };
 
       const todos = todoData.getTodosArr();
@@ -29,14 +30,27 @@
       updateStorage();
     }
 
-    todoData.updateTodo = (idx, updatedTodo) => {
+    todoData.toggleUpdateMode = (idx) => {
+      const todo = todoData.getTodosArr()[idx];
+      todo.isUpdating = !todo.isUpdating;
+    }
+
+    todoData.toggleDoneState = (idx) => {
+      const todo = todoData.getTodosArr()[idx];
+      todo.isDone = !todo.isDone;
+    }
+
+    todoData.updateTodo = (idx, updatedTodoText) => {
       const todos = todoData.getTodosArr();
       const newTodos = [...todos].map((todo, index) => {
         if (index === idx) {
-          return updatedTodo ? { text: updatedTodo, isDone: false } : { text: todo.text, isDone: !(todo.isDone) };
-        } else {
-          return todo;
+          return {
+            ...todo,
+            text: updatedTodoText,
+          }
         }
+
+        return todo;
       });
 
       localStorage.setItem('todos', JSON.stringify(newTodos));
